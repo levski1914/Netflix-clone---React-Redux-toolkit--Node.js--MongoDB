@@ -5,6 +5,8 @@ import {
 } from "@reduxjs/toolkit";
 import { API_KEY, TMDB_BASE_URL } from "../utils/constants";
 import axios from "axios";
+const BACKEND_URL =
+  "https://netflix-clone-react-redux-toolkit-node.onrender.com";
 
 // const BACKEND_URL
 const initialState = {
@@ -58,7 +60,6 @@ export const fetchMovies = createAsyncThunk(
       genres,
       true
     );
-    // console.log(data);
   }
 );
 export const fetchDataByGenre = createAsyncThunk(
@@ -91,7 +92,7 @@ export const getUserLikedMovies = createAsyncThunk(
   async (email) => {
     const {
       data: { movies },
-    } = await axios.get(`http://localhost:3000/api/user/liked/${email}`);
+    } = await axios.get(`${BACKEND_URL}/api/user/liked/${email}`);
     return movies;
   }
 );
@@ -100,7 +101,7 @@ export const removeFromLikedMovies = createAsyncThunk(
   async ({ movieId, email }) => {
     const {
       data: { movies },
-    } = await axios.put("http://localhost:3000/api/user/remove", {
+    } = await axios.put(`${BACKEND_URL}/api/user/remove`, {
       email,
       movieId,
     });

@@ -25,7 +25,7 @@ const Movies = () => {
   }, []);
 
   useEffect(() => {
-    if (genresLoaded) dispatch(fetchMovies({ type: "movies" }));
+    if (genresLoaded) dispatch(fetchMovies({ type: "movie" }));
   }, [genresLoaded]);
 
   window.onscroll = () => {

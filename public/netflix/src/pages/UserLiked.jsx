@@ -41,16 +41,20 @@ const UserLiked = () => {
       <div className="content flex column">
         <h1>My List</h1>
         <div className="grid flex">
-          {movies.map((movie, index) => {
-            return (
-              <Card
-                movieData={movie}
-                index={index}
-                key={movie.id}
-                isLiked={true}
-              />
-            );
-          })}
+          {movies && movies.length > 0 ? (
+            movies.map((movie, index) => {
+              return (
+                <Card
+                  movieData={movie}
+                  index={index}
+                  key={`${movie.id}-${index}`} // Комбинация от id и index
+                  isLiked={true}
+                />
+              );
+            })
+          ) : (
+            <p>No movies found.</p>
+          )}
         </div>
       </div>
     </Container>

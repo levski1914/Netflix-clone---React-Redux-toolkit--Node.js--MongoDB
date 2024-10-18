@@ -14,6 +14,8 @@ import { useDispatch } from "react-redux";
 import { removeFromLikedMovies } from "../store";
 
 const Card = ({ movieData, isLiked = false }) => {
+  const BACKEND_URL =
+    "https://netflix-clone-react-redux-toolkit-node.onrender.com";
   const [isHovered, setIsHovered] = useState(false);
   const [email, setEmail] = useState(undefined);
   const navigate = useNavigate();
@@ -25,7 +27,7 @@ const Card = ({ movieData, isLiked = false }) => {
 
   const addToList = async () => {
     try {
-      await axios.post("http://localhost:3000/api/user/add", {
+      await axios.post(`${BACKEND_URL}/api/user/add`, {
         email,
         data: movieData,
       });
