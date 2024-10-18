@@ -5,6 +5,8 @@ import {
 } from "@reduxjs/toolkit";
 import { API_KEY, TMDB_BASE_URL } from "../utils/constants";
 import axios from "axios";
+
+// const BACKEND_URL
 const initialState = {
   movies: [],
   genresLoaded: false,
